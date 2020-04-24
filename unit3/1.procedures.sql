@@ -45,13 +45,21 @@ DROP PROCEDURE addpeople;
 
 -- Procedure to lend money
 DELIMITER ##
-CREATE PROCEDURE lend(from_person_id INT, amount DOUBLE, to_person_id)
+CREATE PROCEDURE lend(from_person_id INT, amount DOUBLE, to_person_id INT)
 BEGIN
-SET @from_capital = SELECT wealth FROM people WHERE id=from_person_id;
-IF @from_capital <= amount THEN
+DECLARE from_capital DOUBLE DEFAULT 0.0;
+DECLARE to_capital DOUBLE DEFAULT 0.0;
+SET from_capital = (SELECT wealth FROM people WHERE id=from_person_id LIMIT 1);
+SET to_capital = (SELECT wealth FROM people WHERE id=to_person_id LIMIT 1);
+IF from_capital >= amount THEN
+    UPDATE people SET wealth = (wealth - amount) WHERE id = from_person_id;
+    UPDATE people SET wealth = (wealth + amount) WHERE id = to_person_id;
     SELECT "Prestamo exitoso" AS msg;
 ELSE
     SELECT "Error en prestamo" AS error;
 END IF;
 END ##
 DELIMITER ;
+
+-- Call procedure (lend 100 to [2] from [1])
+CALL lend(1, 100, 2);
