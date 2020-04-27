@@ -42,7 +42,8 @@ SET @i = 0;
 REPEAT
     SELECT name, wealth FROM people WHERE id=@i;
     SET @i = @i + 1;
-UNTIL @x < 5 END REPEAT;
+UNTIL @i > 5
+END REPEAT;
 END ##
 DELIMITER ;
 
