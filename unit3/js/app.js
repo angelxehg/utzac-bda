@@ -8,14 +8,18 @@ class Vehicle {
     }
 
     // Methods
+
+    name() {
+        return this.color + " " + this.brand + " " + this.model;
+    }
     turnOn() {
         // TODO
-        return this.color + " " + this.brand + " " + this.model + ": Engine ON";
+        return this.name() + ": Engine ON";
     }
 
     turnOff() {
         // TODO
-        return this.color + " " + this.brand + " " + this.model + ": Engine OFF";
+        return this.name() + ": Engine OFF";
     }
 }
 
@@ -31,8 +35,9 @@ class Truck extends Vehicle {
 
     constructor(brand, model, color) {
         super(brand, model, color);
-        console.log(this.brand + " truck turn on!");
+        console.log(this.turnOn());
     }
 }
 
 voltron = new Truck("H1", "X2020", "Yellow");
+console.log(voltron.turnOff());
