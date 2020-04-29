@@ -35,7 +35,7 @@ def showAudioMenu():
     print("Please select an option:")
     print("1 - List all audios")
     print("2 - Store new audio metadata")
-    print("9 - Exit")
+    print("9 - Back to main menu")
 
 
 def showMusicMenu():
@@ -44,7 +44,7 @@ def showMusicMenu():
     print("Please select an option:")
     print("1 - List all songs")
     print("2 - Store new song metadata")
-    print("9 - Exit")
+    print("9 - Back to main menu")
 
 
 def mainMenu():
@@ -69,16 +69,9 @@ def audioMenu():
                 print(audio)
             input("All audios listed. Press any key to continue")
         elif option == "2":
-            print("New audio wizard:")
-            name = input("Name >> ")
-            author = input("Author >> ")
-            lenght = input("Lenght >> ")
-            audio = Audio(name, author, lenght)
-            print("Result: " + str(audio))
-            confirm = input("Confirm? (Y/N)")
-            if confirm == "Y" or confirm == "y":
-                audios.append(audio)
-                input("Audio saved. Press any key to continue >>")
+            newAudio = Audio.wizard()
+            if newAudio is not None:
+                audios.append(newAudio)
         elif option == "9":
             break
 
@@ -93,17 +86,9 @@ def musicMenu():
                 print(song)
             input("All songs listed. Press any key to continue")
         elif option == "2":
-            print("New song wizard:")
-            name = input("Name >> ")
-            author = input("Author >> ")
-            lenght = input("Lenght >> ")
-            album = input("Album >> ")
-            song = Song(name, author, lenght, album)
-            print("Result: " + str(song))
-            confirm = input("Confirm? (Y/N)")
-            if confirm == "Y" or confirm == "y":
-                songs.append(song)
-                input("Song saved. Press any key to continue >>")
+            newSong = Song.wizard()
+            if newSong is not None:
+                songs.append(newSong)
         elif option == "9":
             break
 
