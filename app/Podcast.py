@@ -55,7 +55,7 @@ class PodcastMenu(AudioMenu):
                 print("Podcast list:")
                 for podcast in self.db.podcasts:
                     print(podcast)
-                input("All podcasts listed. Press any key to continue")
+                input("All podcasts listed. Press any key to continue >> ")
             elif option == "2":
                 newPodcast = Podcast.wizard()
                 if newPodcast is not None:

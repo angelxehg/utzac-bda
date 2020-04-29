@@ -55,7 +55,7 @@ class AudioMenu(Menu):
                 print("Audio list:")
                 for audio in self.db.audios:
                     print(audio)
-                input("All audios listed. Press any key to continue")
+                input("All audios listed. Press any key to continue >> ")
             elif option == "2":
                 newAudio = Audio.wizard()
                 if newAudio is not None:

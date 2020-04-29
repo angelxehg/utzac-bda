@@ -55,7 +55,7 @@ class SongMenu(AudioMenu):
                 print("Song list:")
                 for song in self.db.songs:
                     print(song)
-                input("All songs listed. Press any key to continue")
+                input("All songs listed. Press any key to continue >> ")
             elif option == "2":
                 newSong = Song.wizard()
                 if newSong is not None:
