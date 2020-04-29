@@ -1,11 +1,9 @@
 
+from Menu import Menu
 from Audio import Audio, AudioMenu
 from Song import Song, SongMenu
 from Podcast import Podcast, PodcastMenu
 from Database import Database
-
-#song = Audio("Love Song", "Angel Hurtado", "3:56")
-# print(song)
 
 # Create a Database
 db = Database()
@@ -24,19 +22,12 @@ def welcome():
 # Main menu
 
 
-def showMainMenu():
-    print("")
-    print("/musify/")
-    print("Please select an option:")
-    print("1 - Audios")
-    print("2 - Music")
-    print("3 - Podcast")
-    print("9 - Exit")
+menu = Menu()
 
 
 def mainMenu():
     while True:
-        showMainMenu()
+        menu.options()
         option = input("Please select an option >> ")
         if option == "1":
             audioMenu.show()
