@@ -2,14 +2,13 @@
 from Audio import Audio
 from Song import Song
 from Podcast import Podcast
+from Database import Database
 
 #song = Audio("Love Song", "Angel Hurtado", "3:56")
 # print(song)
 
-# Create an audio array
-audios = []
-songs = []
-podcasts = []
+# Create a Database
+db = Database()
 
 # Welcome screen
 
@@ -79,13 +78,13 @@ def audioMenu():
         option = input("Please select an option >> ")
         if option == "1":
             print("Audio list:")
-            for audio in audios:
+            for audio in db.audios:
                 print(audio)
             input("All audios listed. Press any key to continue")
         elif option == "2":
             newAudio = Audio.wizard()
             if newAudio is not None:
-                audios.append(newAudio)
+                db.audios.append(newAudio)
         elif option == "9":
             break
 
@@ -96,13 +95,13 @@ def musicMenu():
         option = input("Please select an option >> ")
         if option == "1":
             print("Song list:")
-            for song in songs:
+            for song in db.songs:
                 print(song)
             input("All songs listed. Press any key to continue")
         elif option == "2":
             newSong = Song.wizard()
             if newSong is not None:
-                songs.append(newSong)
+                db.songs.append(newSong)
         elif option == "9":
             break
 
@@ -113,13 +112,13 @@ def podcastMenu():
         option = input("Please select an option >> ")
         if option == "1":
             print("Podcast list:")
-            for podcast in podcasts:
+            for podcast in db.podcasts:
                 print(podcast)
             input("All podcasts listed. Press any key to continue")
         elif option == "2":
             newPodcast = Podcast.wizard()
             if newPodcast is not None:
-                podcasts.append(newPodcast)
+                db.podcasts.append(newPodcast)
         elif option == "9":
             break
 
