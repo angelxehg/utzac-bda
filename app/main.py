@@ -1,6 +1,6 @@
 
 from Audio import Audio
-from Song import Song
+from Song import Song, SongMenu
 from Podcast import Podcast
 from Database import Database
 
@@ -9,6 +9,7 @@ from Database import Database
 
 # Create a Database
 db = Database()
+musicMenu = SongMenu(db)
 
 # Welcome screen
 
@@ -40,15 +41,6 @@ def showAudioMenu():
     print("9 - Back to main menu")
 
 
-def showMusicMenu():
-    print("")
-    print("/musify/music")
-    print("Please select an option:")
-    print("1 - List all songs")
-    print("2 - Store new song metadata")
-    print("9 - Back to main menu")
-
-
 def showPodcastMenu():
     print("")
     print("/musify/podcast")
@@ -65,7 +57,7 @@ def mainMenu():
         if option == "1":
             audioMenu()
         elif option == "2":
-            musicMenu()
+            musicMenu.show()
         elif option == "3":
             podcastMenu()
         elif option == "9":
@@ -85,23 +77,6 @@ def audioMenu():
             newAudio = Audio.wizard()
             if newAudio is not None:
                 db.audios.append(newAudio)
-        elif option == "9":
-            break
-
-
-def musicMenu():
-    while True:
-        showMusicMenu()
-        option = input("Please select an option >> ")
-        if option == "1":
-            print("Song list:")
-            for song in db.songs:
-                print(song)
-            input("All songs listed. Press any key to continue")
-        elif option == "2":
-            newSong = Song.wizard()
-            if newSong is not None:
-                db.songs.append(newSong)
         elif option == "9":
             break
 
