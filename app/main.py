@@ -39,7 +39,6 @@ def mainMenu():
     while True:
         showMainMenu()
         option = input("Please select an option >> ")
-        print(option)
         if option == "1":
             audioMenu()
         elif option == "9":
@@ -50,9 +49,22 @@ def audioMenu():
     while True:
         showAudioMenu()
         option = input("Please select an option >> ")
-        print(option)
         if option == "1":
-            input("OK. Press a key to continue")
+            print("Audio list:")
+            for audio in audios:
+                print(audio)
+            input("All audios listed. Press any key to continue")
+        elif option == "2":
+            print("New audio wizard:")
+            name = input("Name >> ")
+            author = input("Author >> ")
+            lenght = input("Lenght >> ")
+            audio = Audio(name, author, lenght)
+            print("Result: " + str(audio))
+            confirm = input("Confirm? (Y/N)")
+            if confirm == "Y" or confirm == "y":
+                audios.append(audio)
+                input("Audio saved. Press any key to continue >>")
         elif option == "9":
             break
 
