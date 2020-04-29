@@ -1,5 +1,5 @@
 
-from Audio import Audio
+from Audio import Audio, AudioMenu
 
 
 class Song(Audio):
@@ -32,13 +32,14 @@ class Song(Audio):
             return None
 
 
-class SongMenu():
+class SongMenu(AudioMenu):
 
     # Constructor
     def __init__(self, db):
-        self.__db = db
+        AudioMenu.__init__(self, db)
 
-    def ___showOptions(self):
+    # Show options
+    def options(self):
         print("")
         print("/musify/music")
         print("Please select an option:")
@@ -46,18 +47,19 @@ class SongMenu():
         print("2 - Store new song metadata")
         print("9 - Back to main menu")
 
+    # Show menu
     def show(self):
         while True:
-            self.___showOptions()
+            self.options()
             option = input("Please select an option >> ")
             if option == "1":
                 print("Song list:")
-                for song in self.__db.songs:
+                for song in self.db.songs:
                     print(song)
                 input("All songs listed. Press any key to continue")
             elif option == "2":
                 newSong = Song.wizard()
                 if newSong is not None:
-                    self.__db.songs.append(newSong)
+                    self.db.songs.append(newSong)
             elif option == "9":
                 break

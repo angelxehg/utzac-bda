@@ -27,3 +27,36 @@ class Audio():
         else:
             print("Operation canceled!")
             return None
+
+
+class AudioMenu():
+
+    # Constructor
+    def __init__(self, db):
+        self.db = db
+
+    # Show options
+    def options(self):
+        print("")
+        print("/musify/audio")
+        print("Please select an option:")
+        print("1 - List all audios")
+        print("2 - Store new audio metadata")
+        print("9 - Back to main menu")
+
+    # Show menu
+    def show(self):
+        while True:
+            self.options()
+            option = input("Please select an option >> ")
+            if option == "1":
+                print("Audio list:")
+                for audio in self.db.audios:
+                    print(audio)
+                input("All audios listed. Press any key to continue")
+            elif option == "2":
+                newAudio = Audio.wizard()
+                if newAudio is not None:
+                    self.db.audios.append(newAudio)
+            elif option == "9":
+                break
