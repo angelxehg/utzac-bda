@@ -37,12 +37,11 @@ class SongMenu(AudioMenu):
     # Constructor
     def __init__(self, db):
         AudioMenu.__init__(self, db)
+        self.setRoute("/musify/music")
 
     # Show options
     def options(self):
-        print("")
-        print("/musify/music")
-        print("Please select an option:")
+        self.askForOption()
         print("1 - List all songs")
         print("2 - Store new song metadata")
         print("9 - Back to main menu")

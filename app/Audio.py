@@ -1,4 +1,7 @@
 
+from Menu import Menu
+
+
 class Audio():
 
     # Constructor
@@ -29,17 +32,16 @@ class Audio():
             return None
 
 
-class AudioMenu():
+class AudioMenu(Menu):
 
     # Constructor
     def __init__(self, db):
         self.db = db
+        self.setRoute("/musify/audio")
 
     # Show options
     def options(self):
-        print("")
-        print("/musify/audio")
-        print("Please select an option:")
+        self.askForOption()
         print("1 - List all audios")
         print("2 - Store new audio metadata")
         print("9 - Back to main menu")

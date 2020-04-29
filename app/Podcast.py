@@ -37,12 +37,11 @@ class PodcastMenu(AudioMenu):
     # Constructor
     def __init__(self, db):
         AudioMenu.__init__(self, db)
+        self.setRoute("/musify/podcast")
 
     # Show options
     def options(self):
-        print("")
-        print("/musify/podcast")
-        print("Please select an option:")
+        self.askForOption()
         print("1 - List all podcasts")
         print("2 - Store new podcast metadata")
         print("9 - Back to main menu")
