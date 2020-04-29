@@ -1,6 +1,7 @@
 
 from Audio import Audio
 from Song import Song
+from Podcast import Podcast
 
 #song = Audio("Love Song", "Angel Hurtado", "3:56")
 # print(song)
@@ -8,6 +9,7 @@ from Song import Song
 # Create an audio array
 audios = []
 songs = []
+podcasts = []
 
 # Welcome screen
 
@@ -26,6 +28,7 @@ def showMainMenu():
     print("Please select an option:")
     print("1 - Audios")
     print("2 - Music")
+    print("3 - Podcast")
     print("9 - Exit")
 
 
@@ -47,6 +50,15 @@ def showMusicMenu():
     print("9 - Back to main menu")
 
 
+def showPodcastMenu():
+    print("")
+    print("/musify/podcast")
+    print("Please select an option:")
+    print("1 - List all podcasts")
+    print("2 - Store new podcast metadata")
+    print("9 - Back to main menu")
+
+
 def mainMenu():
     while True:
         showMainMenu()
@@ -55,6 +67,8 @@ def mainMenu():
             audioMenu()
         elif option == "2":
             musicMenu()
+        elif option == "3":
+            podcastMenu()
         elif option == "9":
             break
 
@@ -89,6 +103,23 @@ def musicMenu():
             newSong = Song.wizard()
             if newSong is not None:
                 songs.append(newSong)
+        elif option == "9":
+            break
+
+
+def podcastMenu():
+    while True:
+        showPodcastMenu()
+        option = input("Please select an option >> ")
+        if option == "1":
+            print("Podcast list:")
+            for podcast in podcasts:
+                print(podcast)
+            input("All podcasts listed. Press any key to continue")
+        elif option == "2":
+            newPodcast = Podcast.wizard()
+            if newPodcast is not None:
+                podcasts.append(newPodcast)
         elif option == "9":
             break
 
