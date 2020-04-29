@@ -1,11 +1,13 @@
 
 from Audio import Audio
+from Song import Song
 
 #song = Audio("Love Song", "Angel Hurtado", "3:56")
 # print(song)
 
 # Create an audio array
 audios = []
+songs = []
 
 # Welcome screen
 
@@ -23,15 +25,25 @@ def showMainMenu():
     print("/musify/")
     print("Please select an option:")
     print("1 - Audios")
+    print("2 - Music")
     print("9 - Exit")
 
 
 def showAudioMenu():
     print("")
-    print("/musify/audios")
+    print("/musify/audio")
     print("Please select an option:")
     print("1 - List all audios")
     print("2 - Store new audio metadata")
+    print("9 - Exit")
+
+
+def showMusicMenu():
+    print("")
+    print("/musify/music")
+    print("Please select an option:")
+    print("1 - List all songs")
+    print("2 - Store new song metadata")
     print("9 - Exit")
 
 
@@ -41,6 +53,8 @@ def mainMenu():
         option = input("Please select an option >> ")
         if option == "1":
             audioMenu()
+        elif option == "2":
+            musicMenu()
         elif option == "9":
             break
 
@@ -65,6 +79,31 @@ def audioMenu():
             if confirm == "Y" or confirm == "y":
                 audios.append(audio)
                 input("Audio saved. Press any key to continue >>")
+        elif option == "9":
+            break
+
+
+def musicMenu():
+    while True:
+        showMusicMenu()
+        option = input("Please select an option >> ")
+        if option == "1":
+            print("Song list:")
+            for song in songs:
+                print(song)
+            input("All songs listed. Press any key to continue")
+        elif option == "2":
+            print("New song wizard:")
+            name = input("Name >> ")
+            author = input("Author >> ")
+            lenght = input("Lenght >> ")
+            album = input("Album >> ")
+            song = Song(name, author, lenght, album)
+            print("Result: " + str(song))
+            confirm = input("Confirm? (Y/N)")
+            if confirm == "Y" or confirm == "y":
+                songs.append(song)
+                input("Song saved. Press any key to continue >>")
         elif option == "9":
             break
 
